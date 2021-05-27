@@ -3,8 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-#include "GameFramework/Pawn.h"
 #include "PawnBase.generated.h"
 
 class UCapsuleComponent;
@@ -31,6 +29,7 @@ public:
 	// Sets default values for this pawn's properties
 	APawnBase();
 
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -38,7 +37,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-protected:
+	protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 };
