@@ -29,39 +29,17 @@ void AProjectileBase::BeginPlay()
 	Super::BeginPlay();
 }
 
-// void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-//                             FVector NormalImpulse, const FHitResult& Hit)
-// {
-// 	AActor* MyOwner = GetOwner();
-// 	if (!MyOwner) return;
-//
-// 	if (OtherActor && OtherActor != MyOwner && OtherActor != this )
-// 	{
-// 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
-// 	}
-//
-// 	// TODO: Apply VFX
-// 	
-// 	Destroy();
-// }
-
 void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                             FVector NormalImpulse, const FHitResult& Hit)
 {
-	// Try to get a reference to the owning class.
 	AActor* MyOwner = GetOwner();
-	// If for some reason we can't get a valid reference, return as we need to check against the owner. 
-	if (!MyOwner)
-	{
-		return;
-	}
-	// If the other ISN'T self OR Owner AND exists, then apply damage. 
-	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
+	if (!MyOwner) return;
+
+	if (OtherActor && OtherActor != MyOwner && OtherActor != this)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
 	}
 
-	// Play a bunch of effects here during the polish phase. - TODO
 
 	Destroy();
 }
