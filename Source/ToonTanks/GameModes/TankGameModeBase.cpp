@@ -41,13 +41,14 @@ void ATankGameModeBase::ActorDied(AActor* DeadActor)
 int32 ATankGameModeBase::GetTargetTurretCount() const
 {
 	TArray<AActor*> TurretActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APawnTank::StaticClass(), TurretActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APawnTurret::StaticClass(), TurretActors);
 	return TurretActors.Num();
 }
 
 void ATankGameModeBase::HandleGameStart()
 {
 	TargetTurrets = GetTargetTurretCount();
+	UE_LOG(LogTemp,Warning, TEXT("%d"), TargetTurrets);
 	PlayerTank = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
 	PlayerControllerRef = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(this, 0));
 
