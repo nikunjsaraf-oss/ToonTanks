@@ -13,7 +13,7 @@ class TOONTANKS_API UHealthComponent : public UActorComponent
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere)
-	float DefaultHealth = 100;
+	float DefaultHealth;
 
 	float Health;
 
